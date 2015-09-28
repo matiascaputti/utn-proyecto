@@ -8,15 +8,16 @@
     <div class="main-subcontainer">
 
 
-<md-list
- <md-divider></md-divider>
+<md-list>
   <md-subheader class="md-no-sticky">Cursos</md-subheader>
+
+  <md-divider></md-divider>
   <md-list-item ng-repeat="person in people" ng-click="goToPerson(person.name, $event)">
     <img alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar" />
     <p>{{ person.name }}</p>
+    <md-divider></md-divider>
   </md-list-item>
 </md-list>
-
 
 
 
