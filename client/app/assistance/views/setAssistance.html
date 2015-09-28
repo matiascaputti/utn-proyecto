@@ -1,0 +1,32 @@
+<md-content id="top" class="md-default-theme background1" parallax-background parallax-ratio="0.4">
+
+  <div class="container main-title">
+    <h1>Tomado de asistencia <span class="lead"></span></h1>
+  </div>
+
+  <div class="main-container">
+    <div class="main-subcontainer">
+
+
+
+
+<md-list>
+  <md-subheader class="md-no-sticky">Alumnos del Primero A</md-subheader>
+
+  <md-divider></md-divider>
+  <md-list-item ng-repeat="topping in toppings">
+    <p> {{ topping.name }} </p>
+    <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
+    <md-divider></md-divider>
+  </md-list-item>
+</md-list>
+
+
+
+
+
+    </div>
+  </div>
+
+</md-content>
+

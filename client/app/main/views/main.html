@@ -1,0 +1,68 @@
+<md-content id="top" class="md-default-theme background1" parallax-background parallax-ratio="0.4">
+
+  <div class="container main-title">
+    <h1>STAINE <span class="lead">seleccione qué desea hacer</span></h1>
+  </div>
+
+  <div class="main-container">
+    <div class="main-subcontainer">
+
+      <md-grid-list
+            md-cols-sm="12" md-cols-md="12" md-cols-gt-md="12"
+            md-row-height-gt-md="4:2" md-row-height="4:2"
+            md-gutter="12px" md-gutter-gt-sm="8px" >
+
+        <md-grid-tile ui-sref="app.assistance[set]" class="main-grid-item concrete"
+            md-rowspan="6" md-colspan="12" md-colspan-sm="12">
+          <md-icon class="main-icon" md-svg-icon="action:assignment_late"></md-icon>
+          <md-grid-tile-footer>
+            <h3>Pasar asistencia</h3>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+
+        <md-grid-tile ui-sref="app.students[list]" class="main-grid-item green"
+            md-rowspan="6" md-colspan="6" md-colspan-sm="12">
+          <md-icon class="main-icon" md-svg-icon="action:assignment"></md-icon>
+          <md-grid-tile-footer>
+            <h3>Buscar alumno</h3>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+
+        <md-grid-tile ui-sref="app.courses[list]" class="main-grid-item yellow"
+            md-rowspan="6" md-colspan="6" md-colspan-sm="12">
+          <md-icon class="main-icon" md-svg-icon="action:assignment_turned_in"></md-icon>
+          <md-grid-tile-footer>
+            <h3>Buscar curso</h3>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+
+        <md-grid-tile class="main-grid-item darkBlue"
+            md-rowspan="6" md-colspan="6" md-colspan-sm="12">
+          <md-icon class="main-icon" md-svg-icon="action:assignment_ind"></md-icon>
+          <md-grid-tile-footer>
+            <h3>Cargar alumno</h3>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+
+        <md-grid-tile class="main-grid-item red"
+            md-rowspan="6" md-colspan="6" md-colspan-sm="12">
+          <md-icon class="main-icon" md-svg-icon="action:assignment_late"></md-icon>
+          <md-grid-tile-footer>
+            <h3>Cargar curso</h3>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+
+        <md-grid-tile class="main-grid-item concrete"
+            md-rowspan="6" md-colspan="12" md-colspan-sm="12">
+          <md-icon class="main-icon" md-svg-icon="action:assignment_late"></md-icon>
+          <md-grid-tile-footer>
+            <h3>Salir</h3>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+
+      </md-grid-list>
+
+    </div>
+  </div>
+
+</md-content>

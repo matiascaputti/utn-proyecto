@@ -1,0 +1,27 @@
+<md-content id="top" class="md-default-theme background1" parallax-background parallax-ratio="0.4">
+
+  <div class="container main-title">
+    <h1>Selección de alumno <span class="lead"></span></h1>
+  </div>
+
+  <div class="main-container">
+    <div class="main-subcontainer">
+
+
+<md-list
+ <md-divider></md-divider>
+  <md-subheader class="md-no-sticky">Alumnos</md-subheader>
+  <md-list-item ng-repeat="person in people" ng-click="goToPerson(person.name, $event)">
+    <img alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar" />
+    <p>{{ person.name }}</p>
+  </md-list-item>
+</md-list>
+
+
+
+
+    </div>
+  </div>
+
+</md-content>
+
