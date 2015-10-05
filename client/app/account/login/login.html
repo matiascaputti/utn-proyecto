@@ -1,11 +1,19 @@
-<div class="container">
-  <div class="row">
+<md-content id="top" class="md-default-theme background1" parallax-background parallax-ratio="0.4">
+
+  <div class="container main-title">
+    <h1>STAINE <span class="lead"></span></h1>
+  </div>
+
+
+  <div class="main-container">
+    <div class="main-subcontainer">
+
     <div class="col-sm-12">
       <h1>Login</h1>
       <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@test.com</code> / <code>test</code></p>
       <p>Admin account is <code>admin@admin.com</code> / <code>admin</code></p>
     </div>
-    <div class="col-sm-12">
+
       <form class="form" name="form" ng-submit="login(form)" novalidate>
 
         <div class="form-group">
@@ -40,7 +48,10 @@
           </a>
         </div>
 
-        <hr>
+        <br>
+        <md-divider></md-divider>
+        <br>
+
         <div>
           <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
             <i class="fa fa-facebook"></i> Connect with Facebook
@@ -53,7 +64,8 @@
           </a>
         </div>
       </form>
+
     </div>
   </div>
-  <hr>
-</div>
+
+</md-content>
