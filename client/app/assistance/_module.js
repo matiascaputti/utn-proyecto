@@ -10,7 +10,7 @@ angular
                 .state('app.assistance[set]', {
                     url: '/assistanceSet',
                     templateUrl: 'app/assistance/views/setAssistance.html',
-                    controller: 'AssistanceSetCtrl'
+                    controller: 'AssistanceSetCtrl as assistanceSet'
                 })
 
             ; // end of $stateProvider

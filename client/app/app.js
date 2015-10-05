@@ -4,6 +4,7 @@ angular.module('utnProyectoApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
+  'ngAnimate',
   'ui.router',
   'ui.bootstrap',
   'ngMaterial',

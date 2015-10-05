@@ -1,7 +1,7 @@
 <md-content id="top" class="md-default-theme background1" parallax-background parallax-ratio="0.4">
 
   <div class="container main-title">
-    <h1>Tomado de asistencia <span class="lead"></span></h1>
+    <h1>Acta de Asistencias <span class="lead"></span></h1>
   </div>
 
   <div class="main-container">
@@ -11,17 +11,50 @@
 
 
 <md-list>
-  <md-subheader class="md-no-sticky">Alumnos del Primero A</md-subheader>
+
+
+<md-input-container>
+  <md-select ng-model="assistanceSet.selectedCourse" placeholder="Selección de curso">
+    <md-option ng-value="opt.name" ng-repeat="opt in assistanceSet.courses">{{ opt.name }}</md-option>
+  </md-select>
+</md-input-container>
+
+
+  <p ng-if="!assistanceSet.selectedCourse" class="help-text">Seleccione un curso para pasar asistencia</p>
+
+<span ng-if="assistanceSet.selectedCourse">
+  <p class="acta-title">Acta de Asistencia <span class="acta-subtitle">creada por <b>{{ user }}</b></span></p>
+
+  <p class="acta-course">{{ assistanceSet.selectedCourse }} -
+    <span class="acta-date"> {{ assistanceSet.selectedDate | date:'EEEE dd MMMM yyyy - dd/MM/yyyy' }}
+      <span type="text" datepicker-popup ng-model="assistanceSet.selectedDate" is-open="assistanceSet.status.opened" current-text="Hoy" clear-text="Borrar" close-text="Cerrar">
+        <button type="button" class="btn btn-default" ng-click="assistanceSet.open($event)">
+          <i class="glyphicon glyphicon-calendar"></i>
+        </button>
+      </span>
+    </span>
+  </p>
 
   <md-divider></md-divider>
-  <md-list-item ng-repeat="topping in toppings">
-    <p> {{ topping.name }} </p>
-    <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
+  <md-list-item ng-repeat="student in assistanceSet.students">
+    <p>
+      <span class="student-number">{{ $index+1 }} -   </span>
+      <span class="student-surname">{{ student.surname }}, </span>
+      <span class="student-name">{{ student.name }}</span>
+    </p>
+    <md-checkbox class="md-secondary" ng-model="student.check"></md-checkbox>
     <md-divider></md-divider>
   </md-list-item>
 </md-list>
+</span>
 
+<div class="acta-save-container">
+  <md-button ng-if="assistanceSet.selectedCourse" ng-click="assistanceSet.saveActa()" class="md-raised md-warn"> Guardar acta de asistencia </md-button>
+</div>
 
+<div>
+  <md-button ui-sref="app.main" class="md-raised md-primary"> Volver </md-button>
+</div>
 
 
 

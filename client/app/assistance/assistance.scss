@@ -1,3 +1,47 @@
 md-checkbox.md-checked .md-icon {
     background-color: #27ae60;
 }
+
+.acta-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px 0px 0px 0px;
+}
+
+.acta-subtitle {
+    font-size: 12px;
+    font-weight: normal;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.acta-course {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    margin: 4px 0px 10px 0px;
+}
+
+.acta-date {
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: capitalize;
+    margin: 0px;
+}
+
+.acta-save-container {
+    text-align: center;
+}
+
+.student-name {
+    text-transform: capitalize;
+}
+
+.student-surname {
+    text-transform: uppercase;
+}
+
+.student-number {
+    font-size: 11px !important;
+}
