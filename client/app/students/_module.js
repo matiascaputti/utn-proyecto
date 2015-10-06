@@ -6,11 +6,18 @@ angular
         .config(function($stateProvider, $urlRouterProvider) {
             $stateProvider
 
-                // View of topic dictionary
+                // List stundents
                 .state('app.students[list]', {
                     url: '/studentsList',
                     templateUrl: 'app/students/views/studentsList.html',
                     controller: 'StudentsListCtrl'
+                })
+
+                // Create stundent
+                .state('app.students[create]', {
+                    url: '/studentCreate',
+                    templateUrl: 'app/students/views/studentCreate.html',
+                    controller: 'StudentCreateCtrl'
                 })
 
             ; // end of $stateProvider

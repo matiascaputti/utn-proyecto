@@ -1,0 +1,64 @@
+<md-content id="top" class="md-default-theme background1" parallax-background parallax-ratio="0.4">
+
+  <div class="container main-title">
+    <h1>Alta de curso <span class="lead"></span></h1>
+  </div>
+
+  <div class="main-container">
+    <div class="main-subcontainer">
+
+
+<md-list>
+  <md-subheader class="md-no-sticky">Curso</md-subheader>
+
+  <md-divider></md-divider>
+
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>Nombre del curso</label>
+          <input ng-model="user.firstName">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Año del curso</label>
+          <input ng-model="theMax">
+        </md-input-container>
+      </div>
+
+      <div layout layout-sm="column">
+        <md-input-container flex>
+          <label>Próximo curso</label>
+          <input ng-model="user.firstName">
+        </md-input-container>
+      </div>
+
+
+
+<md-content class="md-padding autocomplete" layout="column">
+    <md-contact-chips
+        ng-model="courseCreate.contacts"
+        md-contacts="courseCreate.querySearch($query)"
+        md-contact-name="name"
+        md-contact-image="image"
+        md-contact-email="email"
+        md-require-match="true"
+        md-highlight-flags="i"
+        filter-selected="courseCreate.filterSelected"
+        placeholder="Alumnos">
+    </md-contact-chips>
+  </md-content>
+
+
+        <div class="acta-save-container">
+          <md-button ng-click="assistanceSet.saveActa()" class="md-raised md-warn"> Guardar curso </md-button>
+        </div>
+
+        <div>
+          <md-button ui-sref="app.main" class="md-raised md-primary"> Volver </md-button>
+        </div>
+
+
+    </div>
+  </div>
+
+</md-content>
+

@@ -6,11 +6,18 @@ angular
         .config(function($stateProvider, $urlRouterProvider) {
             $stateProvider
 
-                // View of topic dictionary
+                // List of courses
                 .state('app.courses[list]', {
                     url: '/coursesList',
                     templateUrl: 'app/courses/views/coursesList.html',
                     controller: 'CoursesListCtrl'
+                })
+
+                // Create a new course
+                .state('app.courses[create]', {
+                    url: '/coursesCreate',
+                    templateUrl: 'app/courses/views/courseCreate.html',
+                    controller: 'CourseCreateCtrl as courseCreate'
                 })
 
             ; // end of $stateProvider
