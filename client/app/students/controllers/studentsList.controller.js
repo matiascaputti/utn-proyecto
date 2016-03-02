@@ -20,10 +20,15 @@ angular
             $scope.goToPerson = function(person, event) {
                 $mdDialog.show(
                   $mdDialog.alert()
-                    .title('Navigating')
-                    .content('Inspect ' + person)
+                    .title('Opciones - Alumno: ' + person)
+                    .content(
+                        "<button class='btn btn-primary btn-register margin' ui-sref='app.assistance[show]'>Ver faltas</button><br>"+
+                        "<button class='btn btn-primary btn-register margin' disabled>Ver calificaciones</button><br>"+
+                        "<button class='btn btn-primary btn-register margin' disabled>Generar boletín de asistencias</button><br>"+
+                        "<button class='btn btn-primary btn-register margin' disabled>Ver calificaciones</button><br>"
+                    )
                     .ariaLabel('Person inspect demo')
-                    .ok('Done')
+                    .ok('Cerrar')
                     .targetEvent(event)
                 );
             };

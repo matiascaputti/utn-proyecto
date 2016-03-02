@@ -1,14 +1,38 @@
-<div class="container">
-  <div class="row">
+<md-content id="top" class="md-default-theme background1" parallax-background parallax-ratio="0.4">
+
+  <div class="container main-title">
+    <h1>STAINE <span class="lead"></span></h1>
+  </div>
+
+
+  <div class="main-container">
+    <div class="main-subcontainer">
+
     <div class="col-sm-12">
-      <h1>Sign up</h1>
+      <h1>Registro de nueva cuenta</h1>
+      <!--
+      <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@test.com</code> / <code>test</code></p>
+      <p>Admin account is <code>admin@admin.com</code> / <code>admin</code></p>
+      -->
     </div>
-    <div class="col-sm-12">
+
       <form class="form" name="form" ng-submit="register(form)" novalidate>
+
 
         <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
-          <label>Name</label>
+          <label>Rango de cuenta</label>
+
+          <input type="text" name="name" class="form-control" value="Preceptor" disabled
+                 required/>
+          <p class="help-block" ng-show="form.name.$error.required && submitted">
+            A name is required
+          </p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                            'has-error': form.name.$invalid && submitted }">
+          <label>Nombre</label>
 
           <input type="text" name="name" class="form-control" ng-model="user.name"
                  required/>
@@ -37,7 +61,7 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
                                             'has-error': form.password.$invalid && submitted }">
-          <label>Password</label>
+          <label>Contraseña</label>
 
           <input type="password" name="password" class="form-control" ng-model="user.password"
                  ng-minlength="3"
@@ -53,28 +77,18 @@
         </div>
 
         <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
-            Sign up
+          <button class="btn btn-inverse btn-lg btn-login btn-success" type="submit">
+            Registrar
           </button>
-          <a class="btn btn-default btn-lg btn-register" href="/login">
-            Login
+          <a class="btn btn-default btn-lg btn-register btn-warning" href="/login">
+            Ingresar con mi cuenta
           </a>
         </div>
 
-        <hr>
-        <div>
-          <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
-            <i class="fa fa-facebook"></i> Connect with Facebook
-          </a>
-          <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
-            <i class="fa fa-google-plus"></i> Connect with Google+
-          </a>
-          <a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')">
-            <i class="fa fa-twitter"></i> Connect with Twitter
-          </a>
-        </div>
       </form>
+
+
     </div>
   </div>
-  <hr>
-</div>
+
+</md-content>

@@ -3,7 +3,7 @@
 angular
     .module('AssistanceModule')
 
-        .controller('AssistanceSetCtrl', function ($timeout, testFactory, $mdDialog) {
+        .controller('AssistanceSetCtrl', function ($timeout, testFactory, $mdDialog, $state) {
 
             var assistanceSet = this;
 
@@ -43,14 +43,11 @@ angular
                 { name: 'María', surname: 'Gómez', img: '../assets/images/user.png' },
                 { name: 'test', surname: 'test', img: '../assets/images/user.png' },
                 { name: 'test1', surname: 'test', img: '../assets/images/user.png' },
-                { name: 'test2', surname: 'test', img: '../assets/images/user.png' },
-                { name: 'test3', surname: 'test', img: '../assets/images/user.png' },
-                { name: 'test4', surname: 'test', img: '../assets/images/user.png' },
-                { name: 'test5', surname: 'test', img: '../assets/images/user.png' },
-                { name: 'test6', surname: 'test', img: '../assets/images/user.png' }
+                { name: 'test2', surname: 'test', img: '../assets/images/user.png' }
             ];
 
             assistanceSet.saveActa = function() {
+                $state.go('app.main');
                 console.log("ACTA DATE: ", assistanceSet.selectedDate);
                 console.log("STUDENT LIST", assistanceSet.students);
             };

@@ -11,7 +11,10 @@ angular
 
             self.querySearch = querySearch;
             self.allContacts = loadContacts();
+
             self.contacts = [self.allContacts[0]];
+            self.profesores = [self.allContacts[5]];
+
             self.filterSelected = true;
             /**
              * Search for contacts.

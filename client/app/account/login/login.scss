@@ -18,12 +18,18 @@ $btnGithubBackgroundHighlight:      #ccc;
 
 .btn-facebook {
   @include button-variant($btnText, $btnFacebookBackgroundHighlight, $btnFacebookBackgroundHighlight);
+  width: 100%;
+  margin-bottom: 5px;
 }
 .btn-twitter {
   @include button-variant($btnText, $btnTwitterBackground, $btnTwitterBackgroundHighlight);
+  width: 100%;
+  margin-bottom: 5px;
 }
 .btn-google-plus {
   @include button-variant($btnText, $btnGooglePlusBackground, $btnGooglePlusBackgroundHighlight);
+  width: 100%;
+  margin-bottom: 5px;
 }
 .btn-github {
   @include button-variant($btnTextAlt, $btnGithubBackground, $btnGithubBackgroundHighlight);

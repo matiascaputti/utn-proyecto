@@ -20,6 +20,13 @@ angular
                     controller: 'CourseCreateCtrl as courseCreate'
                 })
 
+                // Create a new course
+                .state('app.courses[show]', {
+                    url: '/coursesShow',
+                    templateUrl: 'app/courses/views/courseShow.html',
+                    controller: 'CourseShowCtrl as courseShow'
+                })
+
             ; // end of $stateProvider
 
         }) // end of .config

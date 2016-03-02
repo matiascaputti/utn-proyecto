@@ -1,7 +1,7 @@
 <md-content id="top" class="md-default-theme background1" parallax-background parallax-ratio="0.4">
 
   <div class="container main-title">
-    <h1>Alta de curso <span class="lead"></span></h1>
+    <h1>Agregar nuevo curso <span class="lead"></span></h1>
   </div>
 
   <div class="main-container">
@@ -9,33 +9,48 @@
 
 
 <md-list>
-  <md-subheader class="md-no-sticky">Curso</md-subheader>
+  <md-subheader class="md-no-sticky">Información del curso</md-subheader>
 
   <md-divider></md-divider>
 
       <div layout layout-sm="column">
         <md-input-container flex>
           <label>Nombre del curso</label>
-          <input ng-model="user.firstName">
-        </md-input-container>
-        <md-input-container flex>
-          <label>Año del curso</label>
-          <input ng-model="theMax">
+          <input ng-model="user.name">
         </md-input-container>
       </div>
 
       <div layout layout-sm="column">
         <md-input-container flex>
-          <label>Próximo curso</label>
-          <input ng-model="user.firstName">
+          <label>División</label>
+          <input ng-model="user.divition">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Año</label>
+          <input ng-model="user.year">
         </md-input-container>
       </div>
 
-
-
+Alumnos
 <md-content class="md-padding autocomplete" layout="column">
     <md-contact-chips
         ng-model="courseCreate.contacts"
+        md-contacts="courseCreate.querySearch($query)"
+        md-contact-name="name"
+        md-contact-image="image"
+        md-contact-email="email"
+        md-require-match="true"
+        md-highlight-flags="i"
+        filter-selected="courseCreate.filterSelected"
+        placeholder="Alumnos">
+    </md-contact-chips>
+  </md-content>
+
+<br>
+Profesores
+<md-content class="md-padding autocomplete" layout="column">
+    <md-contact-chips
+        ng-model="courseCreate.profesores"
         md-contacts="courseCreate.querySearch($query)"
         md-contact-name="name"
         md-contact-image="image"

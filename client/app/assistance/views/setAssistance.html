@@ -23,7 +23,7 @@
   <p ng-if="!assistanceSet.selectedCourse" class="help-text">Seleccione un curso para pasar asistencia</p>
 
 <span ng-if="assistanceSet.selectedCourse">
-  <p class="acta-title">Acta de Asistencia <span class="acta-subtitle">creada por <b>{{ user }}</b></span></p>
+  <p class="acta-title">Acta de Asistencia <span class="acta-subtitle">creada por <b>{{ assistanceSet.user }}</b></span></p>
 
   <p class="acta-course">{{ assistanceSet.selectedCourse }} -
     <span class="acta-date"> {{ assistanceSet.selectedDate | date:'EEEE dd MMMM yyyy - dd/MM/yyyy' }}

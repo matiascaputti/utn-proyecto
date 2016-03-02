@@ -9,9 +9,11 @@
     <div class="main-subcontainer">
 
     <div class="col-sm-12">
-      <h1>Login</h1>
+      <h1>Acceso al sistema</h1>
+      <!--
       <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@test.com</code> / <code>test</code></p>
       <p>Admin account is <code>admin@admin.com</code> / <code>admin</code></p>
+      -->
     </div>
 
       <form class="form" name="form" ng-submit="login(form)" novalidate>
@@ -23,7 +25,7 @@
         </div>
 
         <div class="form-group">
-          <label>Password</label>
+          <label>Contraseña</label>
 
           <input type="password" name="password" class="form-control" ng-model="user.password" required>
         </div>
@@ -40,29 +42,37 @@
         </div>
 
         <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
-            Login
+          <button class="btn btn-inverse btn-lg btn-login btn-success" type="submit">
+            Ingresar
           </button>
-          <a class="btn btn-default btn-lg btn-register" href="/signup">
-            Register
+          <a class="btn btn-default btn-lg btn-register btn-warning" href="/signup">
+            Registrarme
           </a>
         </div>
 
+        <br>
         <br>
         <md-divider></md-divider>
         <br>
 
-        <div>
-          <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
-            <i class="fa fa-facebook"></i> Connect with Facebook
-          </a>
-          <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
-            <i class="fa fa-google-plus"></i> Connect with Google+
-          </a>
-          <a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')">
-            <i class="fa fa-twitter"></i> Connect with Twitter
-          </a>
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
+              <i class="fa fa-facebook"></i> Ingresar con Facebook
+            </a>
+          </md-input-container>
+          <md-input-container flex>
+            <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
+              <i class="fa fa-google-plus"></i> Ingresar con Google+
+            </a>
+          </md-input-container>
+          <md-input-container flex>
+            <a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')">
+              <i class="fa fa-twitter"></i> Ingresar con Twitter
+            </a>
+          </md-input-container>
         </div>
+
       </form>
 
     </div>
