@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('utnProyectoApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
+  .controller('SignupCtrl', function ($scope, $state, Auth, $location, $window) {
     $scope.user = {};
     $scope.errors = {};
 
@@ -16,7 +16,7 @@ angular.module('utnProyectoApp')
         })
         .then( function() {
           // Account created, redirect to home
-          $location.path('/');
+          $state.go('app.main');
         })
         .catch( function(err) {
           err = err.data;

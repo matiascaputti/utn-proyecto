@@ -9,10 +9,13 @@
 
 
 <md-list>
-  <md-subheader class="md-no-sticky">Buscar: </md-subheader>
+      <md-input-container class="white-bg">
+        <label>Buscar curso</label>
+        <input ng-model="search">
+      </md-input-container>
 
   <md-divider></md-divider>
-  <md-list-item ng-repeat="course in courses" ng-click="goToPerson(course.name, $event)">
+  <md-list-item ng-repeat="course in courses | filter: search" ng-click="goToPerson(course, $event)">
     <img src="../assets/images/book.png" class="md-avatar" />
     <p class="capitalize">{{ course.year }} - {{ course.division }}</p>
     <md-divider></md-divider>

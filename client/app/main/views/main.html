@@ -5,14 +5,19 @@
   </div>
 
   <div class="main-container">
-    <div class="main-subcontainer">
+
+    <div class="main-subcontainer" ng-if="!user.role">
+        <h5>Debes ingresar con tus credenciales al sistema para visualizar todas las opciones.</h5>
+    </div>
+
+    <div class="main-subcontainer" ng-if="user.role">
 
       <md-grid-list
             md-cols-sm="12" md-cols-md="12" md-cols-gt-md="12"
             md-row-height-gt-md="4:2" md-row-height="4:2"
             md-gutter="12px" md-gutter-gt-sm="8px" >
 
-        <md-grid-tile ui-sref="app.assistance[set]" class="main-grid-item concrete hvr-glow"
+        <md-grid-tile ng-if="user.role != 'profesor'" ui-sref="app.assistance[set]" class="main-grid-item concrete hvr-glow"
             md-rowspan="6" md-colspan="12" md-colspan-sm="12">
           <md-icon class="main-icon" md-svg-icon="action:assignment_turned_in"></md-icon>
           <md-grid-tile-footer>
@@ -36,7 +41,7 @@
           </md-grid-tile-footer>
         </md-grid-tile>
 
-        <md-grid-tile ui-sref="app.students[create]" class="main-grid-item darkBlue hvr-glow"
+        <md-grid-tile ng-if="user.role == 'admin' || user.role == 'director'" ui-sref="app.students[create]" class="main-grid-item darkBlue hvr-glow"
             md-rowspan="6" md-colspan="6" md-colspan-sm="12">
           <md-icon class="main-icon" md-svg-icon="action:assignment_ind"></md-icon>
           <md-grid-tile-footer>
@@ -44,7 +49,7 @@
           </md-grid-tile-footer>
         </md-grid-tile>
 
-        <md-grid-tile ui-sref="app.courses[create]" class="main-grid-item red hvr-glow"
+        <md-grid-tile ng-if="user.role == 'admin' || user.role == 'director'" ui-sref="app.courses[create]" class="main-grid-item red hvr-glow"
             md-rowspan="6" md-colspan="6" md-colspan-sm="12">
           <md-icon class="main-icon" md-svg-icon="action:assignment_late"></md-icon>
           <md-grid-tile-footer>

@@ -14,14 +14,13 @@ angular
                 $scope.courses = result.data;
             });
 
-            $scope.goToPerson = function(person, event) {
+            $scope.goToPerson = function(course, event) {
                 $mdDialog.show(
                   $mdDialog.alert()
-                    .title('Opciones - Curso: ' + person)
+                    .title(course.year + ' - ' + course.division)
                     .content(
                         "<button class='btn btn-primary btn-register margin' ui-sref='app.courses[show]'>Ver estadísticas</button><br>"+
-                        "<button class='btn btn-primary btn-register margin' disabled>Editar curso</button><br>"+
-                        "<button class='btn btn-primary btn-register margin' disabled>Generar reporte de curso</button><br>"
+                        "<button class='btn btn-primary btn-register margin'>Generar reporte de curso</button><br>"
                     )
                     .ariaLabel('Person inspect demo')
                     .ok('Cerrar')

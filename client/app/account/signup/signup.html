@@ -19,14 +19,14 @@
       <form class="form" name="form" ng-submit="register(form)" novalidate>
 
 
-        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                            'has-error': form.name.$invalid && submitted }">
+        <div class="form-group" ng-class="{ 'has-success': form.role.$valid && submitted,
+                                            'has-error': form.role.$invalid && submitted }">
           <label>Rango de cuenta</label>
 
-          <input type="text" name="name" class="form-control" value="Preceptor" disabled
+          <input type="text" name="role" class="form-control" placeholder="admin, director, preceptor, profesor"
                  required/>
-          <p class="help-block" ng-show="form.name.$error.required && submitted">
-            A name is required
+          <p class="help-block" ng-show="form.role.$error.required && submitted">
+            A role is required
           </p>
         </div>
 

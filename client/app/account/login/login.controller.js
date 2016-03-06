@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('utnProyectoApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
+  .controller('LoginCtrl', function ($scope, $state, Auth, $location, $window) {
     $scope.user = {};
     $scope.errors = {};
 
@@ -15,7 +15,7 @@ angular.module('utnProyectoApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/');
+          $state.go('app.main');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
