@@ -3,16 +3,9 @@
 angular
     .module('AssistanceModule')
 
-        .controller('AssistanceShowCtrl', function ($timeout, testFactory, $mdDialog) {
+        .controller('AssistanceShowCtrl', function ($timeout, $mdDialog) {
 
             var assistanceShow = this;
-
-
-            testFactory.get().$promise.then(
-                                            function(data) {
-                                                console.log(data);
-                                            });
-
 
             assistanceShow.open = function($event) {
                 assistanceShow.status.opened = true;

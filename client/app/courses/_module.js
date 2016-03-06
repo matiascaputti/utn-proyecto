@@ -17,7 +17,7 @@ angular
                 .state('app.courses[create]', {
                     url: '/coursesCreate',
                     templateUrl: 'app/courses/views/courseCreate.html',
-                    controller: 'CourseCreateCtrl as courseCreate'
+                    controller: 'CourseCreateCtrl as create'
                 })
 
                 // Create a new course

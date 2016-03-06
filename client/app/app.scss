@@ -25,3 +25,65 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'students/students.scss';
 @import 'modal/modal.scss';
 // endinjector
+
+.blue-bg {
+    background-color: #1C83C6 !important;
+}
+
+.red-bg {
+    background-color: #ED5564 !important;
+}
+
+.center {
+    text-align: center !important;
+}
+
+.capitalize {
+    text-transform: capitalize !important;
+}
+
+.md-raised,
+.md-warn {
+    color: white !important;
+}
+
+.login-container {
+    width: 400px;
+}
+
+.select-white-bg {
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 auto;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+md-toast {
+    margin-top: 50px;
+}
+
+md-virtual-repeat-container {
+    width: 100%;
+}
+
+.md-contact-suggestion {
+    img {
+        display: none;
+    }
+
+    .md-contact-name,
+    .md-contact-email {
+        text-transform: capitalize;
+    }
+}
+
+md-chip-template {
+    .md-contact-avatar {
+        display: none;
+    }
+
+    .md-contact-name {
+        text-transform: capitalize;
+    }
+}

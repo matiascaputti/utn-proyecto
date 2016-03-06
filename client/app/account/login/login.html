@@ -1,20 +1,17 @@
 <md-content id="top" class="md-default-theme background1" parallax-background parallax-ratio="0.4">
 
   <div class="container main-title">
-    <h1>STAINE <span class="lead"></span></h1>
+    <h1>Bienvenido <span class="lead">por favor, ingrese con sus credenciales</span></h1>
   </div>
 
 
-  <div class="main-container">
-    <div class="main-subcontainer">
+  <div class="main-container login-container">
+    <div class="main-subcontainer login-container">
 
-    <div class="col-sm-12">
-      <h1>Acceso al sistema</h1>
-      <!--
-      <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@test.com</code> / <code>test</code></p>
-      <p>Admin account is <code>admin@admin.com</code> / <code>admin</code></p>
-      -->
-    </div>
+      <h3>Panel de acceso</h3>
+      <md-divider></md-divider>
+
+      <br>
 
       <form class="form" name="form" ng-submit="login(form)" novalidate>
 
@@ -41,36 +38,8 @@
           <p class="help-block">{{ errors.other }}</p>
         </div>
 
-        <div>
-          <button class="btn btn-inverse btn-lg btn-login btn-success" type="submit">
-            Ingresar
-          </button>
-          <a class="btn btn-default btn-lg btn-register btn-warning" href="/signup">
-            Registrarme
-          </a>
-        </div>
-
-        <br>
-        <br>
-        <md-divider></md-divider>
-        <br>
-
-        <div layout layout-sm="column">
-          <md-input-container flex>
-            <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
-              <i class="fa fa-facebook"></i> Ingresar con Facebook
-            </a>
-          </md-input-container>
-          <md-input-container flex>
-            <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
-              <i class="fa fa-google-plus"></i> Ingresar con Google+
-            </a>
-          </md-input-container>
-          <md-input-container flex>
-            <a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')">
-              <i class="fa fa-twitter"></i> Ingresar con Twitter
-            </a>
-          </md-input-container>
+        <div class="center">
+          <md-button type="submit" class="md-raised md-warn"> Ingresar </md-button>
         </div>
 
       </form>

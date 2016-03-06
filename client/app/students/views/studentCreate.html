@@ -22,53 +22,53 @@
       <div layout layout-sm="column">
         <md-input-container flex>
           <label>Nombres</label>
-          <input ng-model="user.firstName">
+          <input ng-model="create.student.firstname">
         </md-input-container>
         <md-input-container flex>
           <label>Apellidos</label>
-          <input ng-model="user.surname">
+          <input ng-model="create.student.lastname">
         </md-input-container>
       </div>
 
       <div layout layout-sm="column">
         <md-input-container flex>
           <label>Fecha de nacimiento</label>
-          <input ng-model="user.birth">
+          <input ng-model="create.student.birth">
         </md-input-container>
         <md-input-container flex>
           <label>Teléfono</label>
-          <input ng-model="user.telephone">
+          <input ng-model="create.student.telephone">
         </md-input-container>
         <md-input-container flex>
           <label>Celular</label>
-          <input ng-model="user.mobilephone">
+          <input ng-model="create.student.mobile">
         </md-input-container>
       </div>
 
       <div layout layout-sm="column">
         <md-input-container flex>
           <label>Dirección</label>
-          <input ng-model="user.address">
+          <input ng-model="create.student.address">
         </md-input-container>
       </div>
 
       <div layout layout-sm="column">
         <md-input-container flex>
           <label>Mail del alumno</label>
-          <input ng-model="user.mail">
+          <input ng-model="create.student.email1">
         </md-input-container>
       </div>
 
       <div layout layout-sm="column">
         <md-input-container flex>
           <label>Mail de los padres</label>
-          <input ng-model="user.fatherMail">
+          <input ng-model="create.student.email2">
         </md-input-container>
       </div>
 
 
         <div class="acta-save-container">
-          <md-button ng-click="assistanceSet.saveActa()" class="md-raised md-warn"> Guardar alumno </md-button>
+          <md-button ng-click="saveStudent()" class="md-raised md-warn"> Guardar alumno </md-button>
         </div>
 
         <div>

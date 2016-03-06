@@ -12,9 +12,9 @@
   <md-subheader class="md-no-sticky">Buscar: </md-subheader>
 
   <md-divider></md-divider>
-  <md-list-item ng-repeat="person in people" ng-click="goToPerson(person.name, $event)">
-    <img alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar" />
-    <p>{{ person.name }}</p>
+  <md-list-item ng-repeat="course in courses" ng-click="goToPerson(course.name, $event)">
+    <img src="../assets/images/book.png" class="md-avatar" />
+    <p class="capitalize">{{ course.year }} - {{ course.division }}</p>
     <md-divider></md-divider>
   </md-list-item>
 </md-list>

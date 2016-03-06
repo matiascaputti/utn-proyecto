@@ -13,8 +13,8 @@
 
   <md-divider></md-divider>
   <md-list-item ng-repeat="person in people" ng-click="goToPerson(person.name, $event)">
-    <img alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar" />
-    <p>{{ person.name }}</p>
+    <img src="../assets/images/user.png" class="md-avatar" />
+    <p class="capitalize">{{ person.lastname }}, {{ person.firstname }}</p>
     <md-divider></md-divider>
   </md-list-item>
 </md-list>

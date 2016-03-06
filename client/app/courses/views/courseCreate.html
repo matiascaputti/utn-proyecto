@@ -1,76 +1,100 @@
 <md-content id="top" class="md-default-theme background1" parallax-background parallax-ratio="0.4">
 
   <div class="container main-title">
-    <h1>Agregar nuevo curso <span class="lead"></span></h1>
+    <h1>Agregar/modificar curso <span class="lead"></span></h1>
   </div>
 
+      <md-input-container class="select-white-bg">
+        <label>Selección de curso para modificación</label>
+        <md-select ng-model="create.selectedCourse">
+          <md-option ng-repeat="course in create.courses | orderBy: 'year'" ng-value="course">
+            {{course.year}} - {{course.division}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
   <div class="main-container">
-    <div class="main-subcontainer">
+    <div ng-if="!create.selectedCourse" class="main-subcontainer">
 
+        <h3>Nuevo curso</h3>
+        <md-divider></md-divider>
 
-<md-list>
-  <md-subheader class="md-no-sticky">Información del curso</md-subheader>
+        <br>
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Año -ejemplo: 1-</label>
+            <input ng-model="create.course.year">
+          </md-input-container>
+          <md-input-container flex>
+            <label>División -ejemplo: Economía-</label>
+            <input ng-model="create.course.division">
+          </md-input-container>
+        </div>
 
-  <md-divider></md-divider>
-
-      <div layout layout-sm="column">
-        <md-input-container flex>
-          <label>Nombre del curso</label>
-          <input ng-model="user.name">
-        </md-input-container>
-      </div>
-
-      <div layout layout-sm="column">
-        <md-input-container flex>
-          <label>División</label>
-          <input ng-model="user.divition">
-        </md-input-container>
-        <md-input-container flex>
-          <label>Año</label>
-          <input ng-model="user.year">
-        </md-input-container>
-      </div>
-
-Alumnos
-<md-content class="md-padding autocomplete" layout="column">
-    <md-contact-chips
-        ng-model="courseCreate.contacts"
-        md-contacts="courseCreate.querySearch($query)"
-        md-contact-name="name"
-        md-contact-image="image"
-        md-contact-email="email"
-        md-require-match="true"
-        md-highlight-flags="i"
-        filter-selected="courseCreate.filterSelected"
-        placeholder="Alumnos">
-    </md-contact-chips>
-  </md-content>
-
-<br>
-Profesores
-<md-content class="md-padding autocomplete" layout="column">
-    <md-contact-chips
-        ng-model="courseCreate.profesores"
-        md-contacts="courseCreate.querySearch($query)"
-        md-contact-name="name"
-        md-contact-image="image"
-        md-contact-email="email"
-        md-require-match="true"
-        md-highlight-flags="i"
-        filter-selected="courseCreate.filterSelected"
-        placeholder="Alumnos">
-    </md-contact-chips>
-  </md-content>
-
+        Alumnos
+        <md-content class="autocomplete" layout="column">
+            <md-contact-chips
+                ng-model="create.course.students"
+                md-contacts="create.querySearch(create.students, $query)"
+                md-contact-name="lastname"
+                md-contact-email="firstname"
+                md-require-match="true"
+                md-highlight-flags="i"
+                filter-selected="create.filterSelected"
+                placeholder="Alumnos -buscar por apellido-">
+            </md-contact-chips>
+        </md-content>
 
         <div class="acta-save-container">
-          <md-button ng-click="assistanceSet.saveActa()" class="md-raised md-warn"> Guardar curso </md-button>
+          <md-button ng-click="create.saveCourse()" class="md-raised md-warn"> Guardar curso </md-button>
         </div>
 
         <div>
           <md-button ui-sref="app.main" class="md-raised md-primary"> Volver </md-button>
         </div>
 
+
+    </div>
+        <div ng-if="create.selectedCourse" class="main-subcontainer">
+
+        <h3>Modificar curso
+        <small ng-click="create.newCourse()">(quiero crear un nuevo curso)</small>
+        </h3>
+        <md-divider></md-divider>
+        <br>
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Año -ejemplo: 1-</label>
+            <input ng-model="create.selectedCourse.year">
+          </md-input-container>
+          <md-input-container flex>
+            <label>División -ejemplo: Economía-</label>
+            <input ng-model="create.selectedCourse.division">
+          </md-input-container>
+        </div>
+
+        Alumnos
+        <md-content class="autocomplete" layout="column">
+            <md-contact-chips
+                ng-model="create.selectedCourse.students"
+                md-contacts="create.querySearch(create.students, $query)"
+                md-contact-name="lastname"
+                md-contact-email="firstname"
+                md-require-match="true"
+                md-highlight-flags="i"
+                filter-selected="create.filterSelected"
+                placeholder="Alumnos -buscar por apellido-">
+            </md-contact-chips>
+        </md-content>
+
+        <div class="acta-save-container">
+          <md-button ng-click="create.updateCourse()" class="md-raised md-warn blue-bg"> Actualizar curso </md-button>
+          <md-button ng-click="create.deleteCourse()" class="md-raised md-warn red-bg"> Eliminar curso </md-button>
+        </div>
+
+        <div>
+          <md-button ui-sref="app.main" class="md-raised md-primary"> Volver </md-button>
+        </div>
 
     </div>
   </div>

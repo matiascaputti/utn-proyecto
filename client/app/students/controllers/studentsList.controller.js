@@ -3,19 +3,14 @@
 angular
     .module('StudentsModule')
 
-        .controller('StudentsListCtrl', function ($scope, $timeout, $mdDialog) {
+        .controller('StudentsListCtrl', function (
+            $scope, $timeout, $mdDialog, StudentsService
+        ) {
 
-            $scope.people = [
-                { name: 'Juan Perez', img: '../assets/images/user.png' },
-                { name: 'Ramón Diaz', img: '../assets/images/user.png' },
-                { name: 'María Gómez', img: '../assets/images/user.png' },
-                { name: 'Test 1', img: '../assets/images/user.png' },
-                { name: 'Test 2', img: '../assets/images/user.png' },
-                { name: 'Test 3', img: '../assets/images/user.png' },
-                { name: 'Test 4', img: '../assets/images/user.png' },
-                { name: 'Test 5', img: '../assets/images/user.png' },
-                { name: 'Test 6', img: '../assets/images/user.png' }
-            ];
+            StudentsService.getAll()
+            .then(function(result) {
+                $scope.people = result.data;
+            });
 
             $scope.goToPerson = function(person, event) {
                 $mdDialog.show(

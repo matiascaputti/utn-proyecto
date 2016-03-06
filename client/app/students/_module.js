@@ -17,7 +17,7 @@ angular
                 .state('app.students[create]', {
                     url: '/studentCreate',
                     templateUrl: 'app/students/views/studentCreate.html',
-                    controller: 'StudentCreateCtrl'
+                    controller: 'StudentCreateCtrl as create'
                 })
 
             ; // end of $stateProvider

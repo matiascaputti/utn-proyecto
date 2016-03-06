@@ -27,9 +27,7 @@ angular.module('utnProyectoApp', [
     ;
 
     $urlRouterProvider
-      .otherwise('/index');
-
-    $locationProvider.html5Mode(true);
+      .otherwise('/login');
     $httpProvider.interceptors.push('authInterceptor');
   })
 
