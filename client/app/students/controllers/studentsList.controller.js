@@ -9,18 +9,16 @@ angular
 
             StudentsService.getAll()
             .then(function(result) {
-                $scope.people = result.data;
+                $scope.students = result.data;
             });
 
             $scope.goToPerson = function(person, event) {
                 $mdDialog.show(
                   $mdDialog.alert()
-                    .title('Opciones - Alumno: ' + person)
+                    .title(person.lastname + ', ' + person.firstname)
                     .content(
                         "<button class='btn btn-primary btn-register margin' ui-sref='app.assistance[show]'>Ver faltas</button><br>"+
-                        "<button class='btn btn-primary btn-register margin' disabled>Ver calificaciones</button><br>"+
-                        "<button class='btn btn-primary btn-register margin' disabled>Generar boletín de asistencias</button><br>"+
-                        "<button class='btn btn-primary btn-register margin' disabled>Ver calificaciones</button><br>"
+                        "<button class='btn btn-primary btn-register margin' >Generar boletín de asistencias</button><br>"
                     )
                     .ariaLabel('Person inspect demo')
                     .ok('Cerrar')

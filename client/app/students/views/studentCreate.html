@@ -1,74 +1,154 @@
 <md-content id="top" class="md-default-theme background1" parallax-background parallax-ratio="0.4">
 
   <div class="container main-title">
-    <h1>Alta de alumnos <span class="lead"></span></h1>
+    <h1>Gestión de alumnos <span class="lead"></span></h1>
   </div>
 
+      <md-input-container class="select-white-bg">
+        <label>Selección de alumno para modificación</label>
+        <md-select ng-model="create.selectedStudent">
+          <md-option ng-repeat="student in create.students | orderBy: 'lastname'" ng-value="student">
+            <span class="capitalize">{{student.lastname}}, {{student.firstname}}</span>
+          </md-option>
+        </md-select>
+      </md-input-container>
+
   <div class="main-container">
-    <div class="main-subcontainer">
+    <div ng-if="!create.selectedStudent" class="main-subcontainer">
+        <h3>Nuevo alumno</h3>
+        <md-divider></md-divider>
 
+        <br>
+        <div layout layout-sm="column">
+          <span class="profile-image-container">
+            <img class="profile-image" src="assets/images/user.png">
+          </span>
+        </div>
 
-<md-list>
-  <md-subheader class="md-no-sticky">Información del alumno</md-subheader>
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Nombres</label>
+            <input ng-model="create.student.firstname">
+          </md-input-container>
+          <md-input-container flex>
+            <label>Apellidos</label>
+            <input ng-model="create.student.lastname">
+          </md-input-container>
+        </div>
 
-  <md-divider></md-divider>
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Fecha de nacimiento</label>
+            <input ng-model="create.student.birth">
+          </md-input-container>
+          <md-input-container flex>
+            <label>Teléfono</label>
+            <input ng-model="create.student.telephone">
+          </md-input-container>
+          <md-input-container flex>
+            <label>Celular</label>
+            <input ng-model="create.student.mobile">
+          </md-input-container>
+        </div>
 
-      <div layout layout-sm="column">
-        <md-input-container class="profile-image-container">
-          <img class="profile-image" src="assets/images/user.png">
-        </md-input-container>
-      </div>
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Dirección</label>
+            <input ng-model="create.student.address">
+          </md-input-container>
+        </div>
 
-      <div layout layout-sm="column">
-        <md-input-container flex>
-          <label>Nombres</label>
-          <input ng-model="create.student.firstname">
-        </md-input-container>
-        <md-input-container flex>
-          <label>Apellidos</label>
-          <input ng-model="create.student.lastname">
-        </md-input-container>
-      </div>
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Mail del alumno</label>
+            <input ng-model="create.student.email1">
+          </md-input-container>
+        </div>
 
-      <div layout layout-sm="column">
-        <md-input-container flex>
-          <label>Fecha de nacimiento</label>
-          <input ng-model="create.student.birth">
-        </md-input-container>
-        <md-input-container flex>
-          <label>Teléfono</label>
-          <input ng-model="create.student.telephone">
-        </md-input-container>
-        <md-input-container flex>
-          <label>Celular</label>
-          <input ng-model="create.student.mobile">
-        </md-input-container>
-      </div>
-
-      <div layout layout-sm="column">
-        <md-input-container flex>
-          <label>Dirección</label>
-          <input ng-model="create.student.address">
-        </md-input-container>
-      </div>
-
-      <div layout layout-sm="column">
-        <md-input-container flex>
-          <label>Mail del alumno</label>
-          <input ng-model="create.student.email1">
-        </md-input-container>
-      </div>
-
-      <div layout layout-sm="column">
-        <md-input-container flex>
-          <label>Mail de los padres</label>
-          <input ng-model="create.student.email2">
-        </md-input-container>
-      </div>
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Mail de los padres</label>
+            <input ng-model="create.student.email2">
+          </md-input-container>
+        </div>
 
 
         <div class="acta-save-container">
-          <md-button ng-click="saveStudent()" class="md-raised md-warn"> Guardar alumno </md-button>
+          <md-button ng-click="create.saveStudent()" class="md-raised md-warn"> Guardar alumno </md-button>
+        </div>
+
+        <div>
+          <md-button ui-sref="app.main" class="md-raised md-primary"> Volver </md-button>
+        </div>
+
+
+    </div>
+
+    <div ng-if="create.selectedStudent" class="main-subcontainer">
+        <h3>Modificar alumno
+        <small ng-click="create.newStudent()">(quiero dar de alta un nuevo alumno)</small>
+        </h3>
+
+        <md-divider></md-divider>
+
+        <br>
+        <div layout layout-sm="column">
+          <span class="profile-image-container">
+            <img class="profile-image" src="assets/images/user.png">
+          </span>
+        </div>
+
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Nombres</label>
+            <input ng-model="create.selectedStudent.firstname">
+          </md-input-container>
+          <md-input-container flex>
+            <label>Apellidos</label>
+            <input ng-model="create.selectedStudent.lastname">
+          </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Fecha de nacimiento</label>
+            <input ng-model="create.selectedStudent.birth">
+          </md-input-container>
+          <md-input-container flex>
+            <label>Teléfono</label>
+            <input ng-model="create.selectedStudent.telephone">
+          </md-input-container>
+          <md-input-container flex>
+            <label>Celular</label>
+            <input ng-model="create.selectedStudent.mobile">
+          </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Dirección</label>
+            <input ng-model="create.selectedStudent.address">
+          </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Mail del alumno</label>
+            <input ng-model="create.selectedStudent.email1">
+          </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Mail de los padres</label>
+            <input ng-model="create.selectedStudent.email2">
+          </md-input-container>
+        </div>
+
+
+        <div class="acta-save-container">
+          <md-button ng-click="create.updateStudent()" class="md-raised md-warn blue-bg"> Actualizar alumno </md-button>
+          <md-button ng-click="create.deleteStudent()" class="md-raised md-warn red-bg"> Eliminar alumno </md-button>
         </div>
 
         <div>
