@@ -14,7 +14,7 @@
 
 
 <md-input-container>
-  <md-select ng-model="assistanceSet.selectedCourse" placeholder="Selección de curso">
+  <md-select ng-model="assistanceSet.selectedCourse" ng-change="assistanceSet.filterStudents()" placeholder="Selección de curso">
     <md-option ng-value="course" ng-repeat="course in assistanceSet.courses">{{ course.year }} - {{ course.division }}</md-option>
   </md-select>
 </md-input-container>
@@ -22,7 +22,12 @@
 
   <p ng-if="!assistanceSet.selectedCourse" class="help-text">Seleccione un curso para pasar asistencia</p>
 
-<span ng-if="assistanceSet.selectedCourse">
+  <p ng-if="assistanceSet.selectedCourse && !assistanceSet.selectedCourse.students.length" class="help-text">
+      El curso seleccionado no tiene alumnos cargados aún. <br>
+      Para pasar asistencia, por favor, previanemte agregá alumnos a este curso.
+  </p>
+
+<span ng-if="assistanceSet.selectedCourse.students.length">
   <p class="acta-title">Acta de Asistencia <span class="acta-subtitle">
     creada por <b>{{ assistanceSet.currentUser.name }}</b>
   </span></p>
@@ -38,7 +43,8 @@
   </p>
 
   <md-divider></md-divider>
-  <md-list-item ng-repeat="student in assistanceSet.students | filter: { course: assistanceSet.selectedCourse._id }">
+
+  <md-list-item ng-repeat="student in assistanceSet.students | filter: { course: assistanceSet.selectedCourse._id } as filteredStudents">
     <p>
       <span class="student-number">{{ $index+1 }} -   </span>
       <span class="student-surname">{{ student.lastname }}, </span>
@@ -52,7 +58,8 @@
 </span>
 
 <div class="acta-save-container">
-  <md-button ng-if="assistanceSet.selectedCourse" ng-click="assistanceSet.saveActa()" class="md-raised md-warn"> Guardar acta de asistencia </md-button>
+  <md-button ng-if="assistanceSet.selectedCourse && assistanceSet.selectedCourse.students.length"
+  ng-click="assistanceSet.saveActa()" class="md-raised md-warn"> Guardar acta de asistencia </md-button>
 </div>
 
 <div>

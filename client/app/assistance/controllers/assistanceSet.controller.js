@@ -12,6 +12,11 @@ angular
 
             assistanceSet.currentUser = Auth.getCurrentUser();
 
+            assistanceSet.filterStudents = function() {
+                assistanceSet.selectedCourse.students = _.where(assistanceSet.students, {course: assistanceSet.selectedCourse._id});
+
+                console.log(assistanceSet.selectedCourse);
+            };
 
             CoursesService.getAll()
             .then(function(result) {

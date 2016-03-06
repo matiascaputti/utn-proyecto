@@ -26,6 +26,13 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'modal/modal.scss';
 // endinjector
 
+.no-length-message {
+    color: #777;
+    font-size: 14px;
+    text-align: center;
+    margin: 60px 0px;
+}
+
 .blue-bg {
     background-color: #1C83C6 !important;
 }
