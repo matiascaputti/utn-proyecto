@@ -14,6 +14,9 @@ angular
                 self.students = result.data;
             });
 
+            self.newStudent = function() {
+              self.selectedStudent = undefined;
+            };
 
             self.saveStudent = function() {
                 StudentsService.create(self.student)
