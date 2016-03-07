@@ -15,7 +15,7 @@ angular
 
                 // View
                 .state('app.assistance[show]', {
-                    url: '/assistanceShow',
+                    url: '/assistanceShow/:studentId',
                     templateUrl: 'app/assistance/views/showAssistance.html',
                     controller: 'AssistanceShowCtrl as assistanceShow'
                 })
@@ -27,3 +27,11 @@ angular
 ; // end of file
 
 
+angular
+    .module('AssistanceDataModule', [])
+
+        .config(function($stateProvider, $urlRouterProvider) {
+
+        }) // end of .config
+
+; // end of file

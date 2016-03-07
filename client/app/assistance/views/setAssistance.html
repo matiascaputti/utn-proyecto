@@ -7,66 +7,85 @@
   <div class="main-container">
     <div class="main-subcontainer">
 
+        <md-input-container>
+          <md-select ng-model="assistanceSet.selectedCourse" ng-change="assistanceSet.filterStudents()" placeholder="Selección de curso">
+            <md-option ng-value="course" ng-repeat="course in assistanceSet.courses | orderBy: ['year', 'division']">{{ course.year }} - {{ course.division }}</md-option>
+          </md-select>
+        </md-input-container>
 
 
+          <p ng-if="!assistanceSet.selectedCourse" class="help-text">Seleccione un curso para pasar asistencia</p>
 
-<md-list>
+          <p ng-if="assistanceSet.selectedCourse && !assistanceSet.selectedCourse.students.length" class="help-text">
+              El curso seleccionado no tiene alumnos cargados aún. <br>
+              Para pasar asistencia, por favor, previanemte agregá alumnos a este curso.
+          </p>
 
+        <span ng-if="assistanceSet.selectedCourse.students.length">
+          <p class="acta-title">Acta de Asistencia <span class="acta-subtitle">
+            creada por <b>{{ assistanceSet.currentUser.name }}</b>
+          </span></p>
 
-<md-input-container>
-  <md-select ng-model="assistanceSet.selectedCourse" ng-change="assistanceSet.filterStudents()" placeholder="Selección de curso">
-    <md-option ng-value="course" ng-repeat="course in assistanceSet.courses">{{ course.year }} - {{ course.division }}</md-option>
-  </md-select>
-</md-input-container>
+          <p class="acta-course">{{ assistanceSet.selectedCourse.year }} - {{ assistanceSet.selectedCourse.division }} |
+            <span class="acta-date"> {{ assistanceSet.selectedDate | date:'EEEE dd MMMM yyyy - dd/MM/yyyy' }}
+              <span type="text" datepicker-popup ng-model="assistanceSet.selectedDate" ng-change="assistanceSet.getAssistance()" is-open="assistanceSet.status.opened" current-text="Hoy" clear-text="Borrar" close-text="Cerrar">
+                <button type="button" class="btn btn-default" ng-click="assistanceSet.open($event)">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+              </span>
+            </span>
+          </p>
+          <md-divider></md-divider>
+          <br>
+          <p ng-if="!assistanceSet.selectedDate" class="help-text">
+            Seleccione la fecha en la quiere crear una planilla de asistencia.
+          </p>
 
+          <p ng-if="assistanceSet.todayAssistences.length" class="help-text">
+            Ya hay una planilla de asistencia del día seleccionado. <br>
+            Para ser modificada deberá ser borrada y creada nuevamente.
+          </p>
+          <md-divider></md-divider>
 
-  <p ng-if="!assistanceSet.selectedCourse" class="help-text">Seleccione un curso para pasar asistencia</p>
+        <!-- EDIT LIST -->
+        <md-list>
+          <md-list-item ng-if="assistanceSet.todayAssistences.length" ng-repeat="student in assistanceSet.todayAssistences[0].students">
+            <p>
+              <span class="student-number">{{ $index+1 }} -   </span>
+              <span class="student-surname">{{ student.lastname }}, </span>
+              <span class="student-name">{{ student.firstname }}</span>
+            </p>
+            <md-checkbox class="md-secondary" ng-model="student.check" disabled></md-checkbox>
+            <md-divider></md-divider>
+          </md-list-item>
+        </md-list>
 
-  <p ng-if="assistanceSet.selectedCourse && !assistanceSet.selectedCourse.students.length" class="help-text">
-      El curso seleccionado no tiene alumnos cargados aún. <br>
-      Para pasar asistencia, por favor, previanemte agregá alumnos a este curso.
-  </p>
+        <!-- NEW LIST -->
+        <md-list>
+          <md-list-item ng-if="assistanceSet.selectedDate && !assistanceSet.todayAssistences.length" ng-repeat="student in assistanceSet.students | filter: { course: assistanceSet.selectedCourse._id } as filteredStudents">
+            <p>
+              <span class="student-number">{{ $index+1 }} -   </span>
+              <span class="student-surname">{{ student.lastname }}, </span>
+              <span class="student-name">{{ student.firstname }}</span>
+            </p>
+            <md-checkbox class="md-secondary" ng-model="student.check"></md-checkbox>
+            <md-divider></md-divider>
+          </md-list-item>
+        </md-list>
 
-<span ng-if="assistanceSet.selectedCourse.students.length">
-  <p class="acta-title">Acta de Asistencia <span class="acta-subtitle">
-    creada por <b>{{ assistanceSet.currentUser.name }}</b>
-  </span></p>
+        </span>
 
-  <p class="acta-course">{{ assistanceSet.selectedCourse.year }} - {{ assistanceSet.selectedCourse.division }} |
-    <span class="acta-date"> {{ assistanceSet.selectedDate | date:'EEEE dd MMMM yyyy - dd/MM/yyyy' }}
-      <span type="text" datepicker-popup ng-model="assistanceSet.selectedDate" is-open="assistanceSet.status.opened" current-text="Hoy" clear-text="Borrar" close-text="Cerrar">
-        <button type="button" class="btn btn-default" ng-click="assistanceSet.open($event)">
-          <i class="glyphicon glyphicon-calendar"></i>
-        </button>
-      </span>
-    </span>
-  </p>
+        <div class="acta-save-container">
+          <md-button ng-if="assistanceSet.selectedCourse && assistanceSet.selectedCourse.students.length && assistanceSet.selectedDate && !assistanceSet.todayAssistences.length"
+          ng-click="assistanceSet.saveActa()" class="md-raised md-warn"> Guardar planilla de asistencia </md-button>
+          <md-button ng-if="assistanceSet.todayAssistences.length"
+          ng-click="assistanceSet.deleteActa(assistanceSet.todayAssistences[0]._id)" class="md-raised md-warn red-bg"> Eliminar planilla de asistencia </md-button>
 
-  <md-divider></md-divider>
+        </div>
 
-  <md-list-item ng-repeat="student in assistanceSet.students | filter: { course: assistanceSet.selectedCourse._id } as filteredStudents">
-    <p>
-      <span class="student-number">{{ $index+1 }} -   </span>
-      <span class="student-surname">{{ student.lastname }}, </span>
-      <span class="student-name">{{ student.firstname }}</span>
-    </p>
-    <md-checkbox class="md-secondary" ng-model="student.check"></md-checkbox>
-    <md-divider></md-divider>
-  </md-list-item>
-</md-list>
-
-</span>
-
-<div class="acta-save-container">
-  <md-button ng-if="assistanceSet.selectedCourse && assistanceSet.selectedCourse.students.length"
-  ng-click="assistanceSet.saveActa()" class="md-raised md-warn"> Guardar acta de asistencia </md-button>
-</div>
-
-<div>
-  <md-button ui-sref="app.main" class="md-raised md-primary"> Volver </md-button>
-</div>
-
-
+        <div>
+          <md-button ui-sref="app.main" class="md-raised md-primary"> Volver </md-button>
+        </div>
 
     </div>
   </div>

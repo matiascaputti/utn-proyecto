@@ -21,7 +21,8 @@
     "lodash": "~2.4.1",
     "moment": "~2.10.6",
     "angular-i18n": "~1.4.7",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "angular-chart.js": "^0.8.8"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

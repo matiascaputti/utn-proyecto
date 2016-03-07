@@ -26,6 +26,25 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'modal/modal.scss';
 // endinjector
 
+.logo {
+    width: 110px;
+}
+
+.navbar-brand {
+    padding: 0px;
+}
+
+.help-text {
+  text-align: center;
+  padding: 15px;
+  margin: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 5px;
+  color: #67ADDA;
+  background-color: #20374D;
+}
+
 .no-length-message {
     color: #777;
     font-size: 14px;

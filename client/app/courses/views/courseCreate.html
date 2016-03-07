@@ -6,8 +6,8 @@
 
       <md-input-container class="select-white-bg">
         <label>Selección de curso para modificación</label>
-        <md-select ng-model="create.selectedCourse">
-          <md-option ng-repeat="course in create.courses | orderBy: 'year'" ng-value="course">
+        <md-select ng-model="create.selectedCourse" ng-change="create.getStudents()">
+          <md-option ng-repeat="course in create.courses | orderBy: ['year', 'division']" ng-value="course">
             {{course.year}} - {{course.division}}
           </md-option>
         </md-select>

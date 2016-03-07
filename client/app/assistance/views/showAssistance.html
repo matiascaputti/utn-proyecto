@@ -7,46 +7,105 @@
   <div class="main-container">
     <div class="main-subcontainer">
 
+<div id="fichaAsistencia">
 <md-list>
 
-      <p class="acta-title">Acta de inasistencias</p>
+      <h3><span class="capitalize center">{{assistanceShow.student.lastname}}, {{assistanceShow.student.firstname}}</span></h3>
+      <md-divider></md-divider>
 
-      <p class="student-inassistance">
-        faltas hasta el día {{ assistanceShow.selectedDate | date:'EEEE dd MMMM yyyy - dd/MM/yyyy' }}
+      <p class="acta-title">
+          <u>Acta de inasistencias</u> <small>control de firmas</small>
       </p>
 
-      <md-divider></md-divider>
-      <md-list-item ng-repeat="item in assistanceShow.inassistance">
+      <p class="student-inassistance">
+        <!--faltas hasta el día {{ assistanceShow.selectedDate | date:'EEEE dd MMMM yyyy - dd/MM/yyyy' }}-->
+      </p>
+
+      <md-list-item ng-repeat="item in assistanceShow.studentAssistance | filter: { status: false } as inasistencias">
         <p>
-          <span class="student-number">{{ $index+1 }} -   </span>
-          <span class="student-name">{{ item.name }}</span>
+          <span class="student-number">Inasistencia {{ $index+1 }} -   </span>
+          <span class="student-name">{{ item.assistance.date | date: 'dd/MM/yyyy' }}</span>
+          <span ng-if="!item.signed" style="color:#999;"> → padre ó tutor debe firmar esta inasistencia __________________</span>
+           <span ng-if="item.signed" style="color:#999;"> → inasistencia ya firmada</span>
+           <span ng-if="item.justified" style="color:#999;"> - justificada</span>
         </p>
-        <span ng-if="item.just" class="inassistance-check1"><i class="fa fa-certificate"></i></span>
-        <span ng-if="item.check" class="inassistance-check2"><i class="fa fa-check-square-o"></i></span>
-        <span ng-if="!item.check" class="inassistance-check2"><i class="fa fa-square-o"></i></span>
+
+        <span ng-if="item.justified" ng-click="assistanceShow.changeJust(item)" class="inassistance-check1"><i class="fa fa-certificate"></i></span>
+        <span ng-if="!item.justified" ng-click="assistanceShow.changeJust(item)" class="inassistance-check1" style="color:#BBB !important;"><i class="fa fa-certificate"></i></span>
+
+        <span ng-if="item.signed" ng-click="assistanceShow.changeSign(item)" class="inassistance-check2"><i class="fa fa-check-square-o"></i></span>
+        <span ng-if="!item.signed" ng-click="assistanceShow.changeSign(item)" class="inassistance-check2"><i class="fa fa-square-o"></i></span>
         <md-divider></md-divider>
       </md-list-item>
 
+      <br>
+      <p ng-if="!inasistencias.length" class="help-text">El alumno no tiene faltas.</p>
+
 </md-list>
+      <p class="acta-title"><u>Estadísticas de asistencia</u></p>
 
+      <p style="margin: 15px; padding: 15px; background-color: white; border-radius: 5px;">
+        Sobre un total de {{assistanceShow.assistanceTrue + assistanceShow.assistanceFalse}} días de clase,
+        <span class="capitalize center">{{assistanceShow.student.lastname}}, {{assistanceShow.student.firstname}}</span> asistíó
+        {{assistanceShow.assistanceTrue}} y faltó {{assistanceShow.assistanceFalse}} días.
+      </p>
 
-    <br>
-      <p class="acta-title">Mis estadísticas de asistencias</p>
+</div>
 
-        <div layout layout-sm="column">
-          <md-input-container class="flex-66 graph">
-            <img src="assets/images/1.jpg">
-          </md-input-container>
-          <md-input-container class="flex-33 graph">
-            <img src="assets/images/2.jpg">
-          </md-input-container>
+<span ng-if="inasistencias.length">
+      <br>
+        <div layout="row">
+          <div flex>
+            <small><b>Asistencias / Inasistencias</b></small>
+            <canvas id="radar" class="chart chart-doughnut"
+              chart-data="assistanceShow.data1" chart-labels="assistanceShow.labels1" chart-colours="assistanceShow.colors1">
+            </canvas>
+          </div>
+          <div flex>
+            <small><b>Inasistencias firmadas</b></small>
+            <canvas id="radar" class="chart chart-doughnut"
+              chart-data="assistanceShow.data2" chart-labels="assistanceShow.labels2" chart-colours="assistanceShow.colors2">
+            </canvas>
+          </div>
+          <div flex>
+            <small><b>Inasistencias justificadas</b></small>
+            <canvas id="radar" class="chart chart-doughnut"
+              chart-data="assistanceShow.data3" chart-labels="assistanceShow.labels3" chart-colours="assistanceShow.colors3">
+            </canvas>
+          </div>
         </div>
 
+        <div layout="row">
+          <div flex>
+            <small><b>Distribución de inasistencias según día de semana</b></small>
+            <canvas id="radar" class="chart chart-bar"
+              chart-data="assistanceShow.data4" chart-labels="assistanceShow.labels4">
+            </canvas>
+          </div>
+        </div>
+
+        <div layout="row">
+          <div flex>
+            <small><b>Distribución de inasistencias según mes del año</b></small>
+            <canvas id="radar" class="chart chart-bar"
+              chart-data="assistanceShow.data5" chart-labels="assistanceShow.labels5">
+            </canvas>
+          </div>
+        </div>
+
+<br>
+</span>
+
+
+
+<md-divider></md-divider>
 <div>
   <md-button ui-sref="app.main" class="md-raised md-primary"> Volver </md-button>
+  <md-button class="md-raised md-warn" ng-click="assistanceShow.printDiv('fichaAsistencia')"> Generar boletín de faltas </md-button>
 </div>
 
     </div>
+<br>
   </div>
 
 

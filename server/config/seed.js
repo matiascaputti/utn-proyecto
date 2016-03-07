@@ -3,6 +3,11 @@
 var User = require('../api/user/user.model');
 var Course = require('../api/course/course.model');
 var Student = require('../api/student/student.model');
+var Assistance = require('../api/assistance/assistance.model');
+var AssistanceData = require('../api/assistanceData/assistanceData.model');
+
+//Assistance.find({}).remove(function() {});
+//AssistanceData.find({}).remove(function() {});
 
 User.find({}).remove(function() {
   User.create({
@@ -41,7 +46,48 @@ User.find({}).remove(function() {
   Course.create({
     _id: '56db61f8fb82f7e111120001',
     year: '1',
-    division: 'Economía'
+    division: 'Economía',
+    students: [
+      {
+          _id: '56db61f8fb82f7e1111S0001',
+          course: '56db61f8fb82f7e111120001',
+          firstname: 'Juan',
+          lastname: 'Perez',
+          dni: '34534634',
+          address: '23 nº 3434'
+        }, {
+          _id: '56db61f8fb82f7e1111S0002',
+          course: '56db61f8fb82f7e111120001',
+          firstname: 'Gonzalo',
+          lastname: 'Muzzi',
+          dni: '43636346',
+          address: '52 nº 2352'
+        },
+        {
+          _id: '56db61f8fb82f7e1111S0003',
+          course: '56db61f8fb82f7e111120001',
+          firstname: 'Marcos',
+          lastname: 'Luciano',
+          dni: '45645343',
+          address: '44 nº 1234'
+        },
+        {
+          _id: '56db61f8fb82f7e1111S0004',
+          course: '56db61f8fb82f7e111120001',
+          firstname: 'Simon',
+          lastname: 'Basilo',
+          dni: '98374534',
+          address: '63 nº 235'
+        },
+        {
+          _id: '56db61f8fb82f7e1111S0005',
+          course: '56db61f8fb82f7e111120001',
+          firstname: 'Marzo',
+          lastname: 'Gomez',
+          dni: '645647547',
+          address: '64 nº 234'
+        }
+    ]
   }, {
     year: '1',
     division: 'Sociales'
@@ -81,12 +127,14 @@ User.find({}).remove(function() {
 
   Student.find({}).remove(function() {
   Student.create({
+    _id: '56db61f8fb82f7e1111S0001',
     course: '56db61f8fb82f7e111120001',
     firstname: 'Juan',
     lastname: 'Perez',
     dni: '34534634',
     address: '23 nº 3434'
   }, {
+    _id: '56db61f8fb82f7e1111S0002',
     course: '56db61f8fb82f7e111120001',
     firstname: 'Gonzalo',
     lastname: 'Muzzi',
@@ -94,6 +142,7 @@ User.find({}).remove(function() {
     address: '52 nº 2352'
   },
   {
+    _id: '56db61f8fb82f7e1111S0003',
     course: '56db61f8fb82f7e111120001',
     firstname: 'Marcos',
     lastname: 'Luciano',
@@ -101,6 +150,7 @@ User.find({}).remove(function() {
     address: '44 nº 1234'
   },
   {
+    _id: '56db61f8fb82f7e1111S0004',
     course: '56db61f8fb82f7e111120001',
     firstname: 'Simon',
     lastname: 'Basilo',
@@ -108,6 +158,7 @@ User.find({}).remove(function() {
     address: '63 nº 235'
   },
   {
+    _id: '56db61f8fb82f7e1111S0005',
     course: '56db61f8fb82f7e111120001',
     firstname: 'Marzo',
     lastname: 'Gomez',

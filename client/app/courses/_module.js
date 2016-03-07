@@ -22,9 +22,9 @@ angular
 
                 // Create a new course
                 .state('app.courses[show]', {
-                    url: '/coursesShow',
+                    url: '/coursesShow/:courseId',
                     templateUrl: 'app/courses/views/courseShow.html',
-                    controller: 'CourseShowCtrl as courseShow'
+                    controller: 'CourseShowCtrl as show'
                 })
 
             ; // end of $stateProvider

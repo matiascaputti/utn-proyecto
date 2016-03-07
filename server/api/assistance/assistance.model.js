@@ -5,6 +5,7 @@ var deepPopulate = require('mongoose-deep-populate')(mongoose);
 var Schema = mongoose.Schema;
 
 var assistance = new Schema({
+    date: { type: Date },
     course: {type: Schema.Types.Mixed },
     preceptor: {type: Schema.Types.Mixed },
     students: {type: Schema.Types.Mixed }

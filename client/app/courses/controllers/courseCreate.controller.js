@@ -44,6 +44,10 @@ angular
               self.selectedCourse = undefined;
             };
 
+            self.getStudents = function() {
+              //console.log('course selected');
+            };
+
             self.saveCourse = function() {
               CoursesService.create(self.course)
               .then(function(result){

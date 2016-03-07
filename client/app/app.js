@@ -10,10 +10,12 @@ angular.module('utnProyectoApp', [
   'ngMaterial',
   'duScroll',
   'angular-parallax',
+  'chart.js',
 
   'CoursesModule',
   'StudentsModule',
   'AssistanceModule',
+  'AssistanceDataModule',
 
 ])
 
