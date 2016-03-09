@@ -28,11 +28,11 @@ angular
                     }
                 });
 
-                self.days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-                self.months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                self.days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+                self.months = ['Marzo', 'Abril', 'Mayo', 'Junio',
                                 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
                 self.dayAssistanceTotal = [0, 0, 0, 0, 0, 0, 0];
-                self.monthAssistanceTotal = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                self.monthAssistanceTotal = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
                 self.courseAssistances.forEach(function(item) {
                     var itemDate = moment(item.assistance.date);
@@ -42,14 +42,11 @@ angular
                         self.totalInnasistance++;
                     }
                 });
+                self.dayAssistanceTotal = self.dayAssistanceTotal.slice(1,-1);
+                self.monthAssistanceTotal = self.monthAssistanceTotal.slice(2);
 
                 self.data1 = [self.dayAssistanceTotal];
                 self.data2 = [self.monthAssistanceTotal];
-
-                console.log(self.dayAssistanceTotal);
-                console.log(self.monthAssistanceTotal);
-
-
             });
 
         }) // end of .controller

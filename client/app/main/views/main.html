@@ -19,25 +19,25 @@
 
         <md-grid-tile ng-if="user.role != 'profesor'" ui-sref="app.assistance[set]" class="main-grid-item concrete hvr-glow"
             md-rowspan="6" md-colspan="12" md-colspan-sm="12">
-          <md-icon class="main-icon" md-svg-icon="action:assignment_turned_in"></md-icon>
+          <md-icon class="main-icon" md-svg-icon="action:event"></md-icon>
           <md-grid-tile-footer>
-            <h3>Gestión de asistencias</h3>
+            <p>Gestión de asistencias</p>
           </md-grid-tile-footer>
         </md-grid-tile>
 
         <md-grid-tile ui-sref="app.students[list]" class="main-grid-item green hvr-glow"
             md-rowspan="6" md-colspan="6" md-colspan-sm="12">
-          <md-icon class="main-icon" md-svg-icon="action:assignment"></md-icon>
+          <md-icon class="main-icon" md-svg-icon="action:trending_up"></md-icon>
           <md-grid-tile-footer>
-            <h3>Reportes y estadísticas por alumno</h3>
+            <p>Reportes y estadísticas por alumno</p>
           </md-grid-tile-footer>
         </md-grid-tile>
 
         <md-grid-tile ui-sref="app.courses[list]" class="main-grid-item yellow hvr-glow"
             md-rowspan="6" md-colspan="6" md-colspan-sm="12">
-          <md-icon class="main-icon" md-svg-icon="action:assignment_turned_in"></md-icon>
+          <md-icon class="main-icon" md-svg-icon="action:trending_up"></md-icon>
           <md-grid-tile-footer>
-            <h3>Reportes y estadísticas por curso</h3>
+            <p>Reportes y estadísticas por curso</p>
           </md-grid-tile-footer>
         </md-grid-tile>
 
@@ -45,23 +45,23 @@
             md-rowspan="6" md-colspan="6" md-colspan-sm="12">
           <md-icon class="main-icon" md-svg-icon="action:assignment_ind"></md-icon>
           <md-grid-tile-footer>
-            <h3>Gestión de alumnos</h3>
+            <p>Gestión de alumnos</p>
           </md-grid-tile-footer>
         </md-grid-tile>
 
         <md-grid-tile ng-if="user.role == 'admin' || user.role == 'director'" ui-sref="app.courses[create]" class="main-grid-item red hvr-glow"
             md-rowspan="6" md-colspan="6" md-colspan-sm="12">
-          <md-icon class="main-icon" md-svg-icon="action:assignment_late"></md-icon>
+          <md-icon class="main-icon" md-svg-icon="action:assignment"></md-icon>
           <md-grid-tile-footer>
-            <h3>Gestión de cursos</h3>
+            <p>Gestión de cursos</p>
           </md-grid-tile-footer>
         </md-grid-tile>
 
         <md-grid-tile class="main-grid-item concrete hvr-glow"
             md-rowspan="6" md-colspan="12" md-colspan-sm="12">
-          <md-icon class="main-icon" md-svg-icon="action:assignment_late"></md-icon>
+          <md-icon class="main-icon" md-svg-icon="action:input"></md-icon>
           <md-grid-tile-footer>
-            <h3>Desconectarme</h3>
+            <p>Desconectarme</p>
           </md-grid-tile-footer>
         </md-grid-tile>
 

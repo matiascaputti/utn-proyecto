@@ -33,11 +33,13 @@ angular
                     assistanceShow.inassistance.forEach(function(item) {
                         assistanceShow.inassistancePerDay[moment(item.assistance.date).day()]++;
                     });
+                    assistanceShow.inassistancePerDay = assistanceShow.inassistancePerDay.slice(1,-1);
 
                     assistanceShow.inassistancePerMonth = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     assistanceShow.inassistance.forEach(function(item) {
                         assistanceShow.inassistancePerMonth[moment(item.assistance.date).month()]++;
                     });
+                    assistanceShow.inassistancePerMonth = assistanceShow.inassistancePerMonth.slice(2);
 
                     // graphs
                     assistanceShow.labels1 =["Asistencias", "Inasistencias"];
@@ -52,10 +54,10 @@ angular
                     assistanceShow.data3 = [assistanceShow.justTrue, assistanceShow.justFalse];
                     assistanceShow.colors3 = ['#e67e22','#eeeeee'];
 
-                    assistanceShow.labels4 =["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+                    assistanceShow.labels4 =["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
                     assistanceShow.data4 = [assistanceShow.inassistancePerDay];
 
-                    assistanceShow.labels5 =["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                    assistanceShow.labels5 =["Marzo", "Abril", "Mayo", "Junio",
                                             "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
                     assistanceShow.data5 = [assistanceShow.inassistancePerMonth];
                 });
