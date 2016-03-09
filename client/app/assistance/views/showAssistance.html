@@ -75,30 +75,69 @@
           </div>
         </div>
 
-        <div layout="row">
-          <div flex>
-            <small><b>Distribución de inasistencias según día de semana</b></small>
-            <canvas id="radar" class="chart chart-bar"
-              chart-data="assistanceShow.data4" chart-labels="assistanceShow.labels4">
-            </canvas>
-          </div>
-        </div>
+<div>
+    <div>
+        <small><b>Distribución de inasistencias según día de semana</b></small>
+        <canvas id="radar" class="chart chart-bar"
+          chart-data="assistanceShow.data4" chart-labels="assistanceShow.labels4">
+        </canvas>
+    </div>
 
-        <div layout="row">
-          <div flex>
-            <small><b>Distribución de inasistencias según mes del año</b></small>
-            <canvas id="radar" class="chart chart-bar"
-              chart-data="assistanceShow.data5" chart-labels="assistanceShow.labels5">
-            </canvas>
-          </div>
-        </div>
+    <div class="col-xs-12">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Mes</th>
+              <th>Inasistencias</th>
+              <th>Porcentaje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="day in assistanceShow.inassistancePerDay track by $index">
+              <td>{{assistanceShow.labels4[$index]}}</td>
+              <td>{{day}}</td>
+              <td>{{day / assistanceShow.totalInassistance * 100 | number:2}}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!--end of .table-responsive-->
+    </div>
+</div>
 
-<br>
+
+<div>
+    <div>
+      <small><b>Distribución de inasistencias según mes del año</b></small>
+      <canvas id="radar" class="chart chart-bar"
+        chart-data="assistanceShow.data5" chart-labels="assistanceShow.labels5">
+      </canvas>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Mes</th>
+              <th>Inasistencias</th>
+              <th>Porcentaje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="month in assistanceShow.inassistancePerMonth track by $index">
+              <td>{{assistanceShow.labels5[$index]}}</td>
+              <td>{{month}}</td>
+              <td>{{month / assistanceShow.totalInassistance * 100 | number:2}}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!--end of .table-responsive-->
+    </div>
+</div>
+
 </span>
 
-
-
-<md-divider></md-divider>
 <div>
   <md-button ui-sref="app.main" class="md-raised md-primary"> Volver </md-button>
   <md-button class="md-raised md-warn" ng-click="assistanceShow.printDiv('fichaAsistencia')"> Generar boletín de faltas </md-button>

@@ -28,15 +28,22 @@ angular
                     assistanceShow.justTrue = (_.where(response.data, {student: $stateParams.studentId, status: false, justified: true}).length);
                     assistanceShow.justFalse = (_.where(response.data, {student: $stateParams.studentId, status: false, justified: false}).length);
 
+                    assistanceShow.totalInassistance = 0;
+                    assistanceShow.totalDayInassistance = 0;
+                    assistanceShow.totalMonthInassistance = 0;
+
                     assistanceShow.inassistance = _.where(response.data, {student: $stateParams.studentId, status: false});
                     assistanceShow.inassistancePerDay = [0, 0, 0, 0, 0, 0, 0];
                     assistanceShow.inassistance.forEach(function(item) {
                         assistanceShow.inassistancePerDay[moment(item.assistance.date).day()]++;
+                        assistanceShow.totalDayInassistance++;
+                        assistanceShow.totalInassistance++;
                     });
                     assistanceShow.inassistancePerDay = assistanceShow.inassistancePerDay.slice(1,-1);
 
                     assistanceShow.inassistancePerMonth = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     assistanceShow.inassistance.forEach(function(item) {
+                        assistanceShow.totalMonthInassistance++;
                         assistanceShow.inassistancePerMonth[moment(item.assistance.date).month()]++;
                     });
                     assistanceShow.inassistancePerMonth = assistanceShow.inassistancePerMonth.slice(2);

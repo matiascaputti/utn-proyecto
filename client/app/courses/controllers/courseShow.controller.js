@@ -19,7 +19,7 @@ angular
                 self.assistanceDatas = result.data;
 
                 self.courseAssistances = [];
-                self.totalInnasistance = 0;
+                self.totalInassistance = 0;
 
                 // get only this course assistances
                 self.assistanceDatas.forEach(function(item) {
@@ -39,7 +39,7 @@ angular
                     if (item.status === false) {
                         self.dayAssistanceTotal[itemDate.day()]++;
                         self.monthAssistanceTotal[itemDate.month()]++;
-                        self.totalInnasistance++;
+                        self.totalInassistance++;
                     }
                 });
                 self.dayAssistanceTotal = self.dayAssistanceTotal.slice(1,-1);
